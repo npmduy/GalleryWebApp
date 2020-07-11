@@ -15,27 +15,16 @@
   </head>
 
   <body>
-		<style>
-			h1 {
-        margin-top: 5px;
+    <style>
+      h1 {
+	margin-top: 5px;
         font-family: Lobster;
-				margin-bottom: 40px;
-			}
+        }
       p {
+        font-family: Lobster;
         font-size: 20px;
       }
-      li {
-        font-size: 20px;
-      }
-      #credit {
-        margin-bottom: 2px;
-      }
-      #aboutContent {
-        border-right-style:solid;
-        border-width: 5px;
-        border-color: grey;
-      }
-		</style>
+    </style>
     <div id="container">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="{{url_for('main')}}">Photos drive</a>
@@ -45,47 +34,28 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('main') }}">Home<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{ url_for('main') }}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('gallery') }}">Gallery</a>
-						</li>
-						<li class="nav-item">
+	    </li>
+	    <li class="nav-item">
               <a class="nav-link" href="{{ url_for('about') }}">About</a>
             </li>
           </ul>
         </div>
       </nav>
-      <h1 class='text-center'>About us</h1>
+      <h1 class='text-center'>-- Gallery --</h1>
       <div class="row">
-				<div class="col-3" id='aboutContent'>
-					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-						<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Site's description</a>
-						<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">About us</a>
-					</div>
-				</div>
-				<div class="col-9">
-					<div class="tab-content" id="v-pills-tabContent">
-						<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-              <p>This is an online gallery which allow everyone to share their favorite photos to the community</p>
-              <p>Feel free to share and get your favorite photos</p>
-              <p>Have fun!</p>
-              <p>Created with: Python Flask, HTML5, CSS3, Bootstrap</p>
+        {% for item in list_images%}
+          <div class="col-6">
+            <img class='col-12' src="{{ url_for('static', filename =item[0]) }}">
+            <div class='text-center'>
+              <p>{{item[0]}} - {{item[1]}}</p>
             </div>
-						<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-              <p>Created by: Nguyen Pham Minh Duy - full-stack web developer</p>
-              <div>
-                <p id='credit'>You can find me at:</p>
-                <ul>
-                  <li>npmduy@gmail.com</li>
-                  <li>npmduy@minhduy.com</li>
-                  <li>https://github.com/npmduy</li>
-                </ul>
-              </div>
-						</div>
-						</div>
-				</div>
-			</div>
+          </div>
+        {%endfor%}
+      </div>
     </div>
   </body>
 </html>
