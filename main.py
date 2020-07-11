@@ -44,7 +44,7 @@ def gallery():
 
 @app.route('/about')
 def about():
-    return render_template('about.html', the_title="About")
+    return render_template('about.html', the_title="About",site_desc='hello\naaaaaa')
 
 @app.route('/uploads', methods=['GET', 'POST'])
 def upload():
